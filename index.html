@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Griya Sarana Mukti - Perumahan Modern & Nyaman</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #10b981;
+            --primary-dark: #059669;
+            --primary-light: #a7f3d0;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-dark: #1f2937;
+            --text-light: #f9fafb;
+            --accent-color: #fbbf24;
+            --shadow: 0 8px 32px rgba(16, 185, 129, 0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #bbf7d0 100%);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Liquid Glass Effect */
+        .glass-effect {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+        
+        /* Header & Navigation - Mobile First */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 5%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+        }
+        
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--text-dark);
+        }
+        
+        .logo-text span {
+            color: var(--primary-color);
+        }
+        
+        /* Mobile Navigation */
+        .mobile-menu-btn {
+            display: block;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-dark);
+            background: none;
+            border: none;
+            z-index: 1001;
+        }
+        
+        .nav-links {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            padding: 80px 30px 30px;
+            transition: var(--transition);
+            z-index: 1000;
+        }
+        
+        .nav-links.active {
+            right: 0;
+        }
+        
+        .nav-links li {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 18px;
+            padding: 10px 0;
+            display: block;
+            border-bottom: 2px solid transparent;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+            margin-top: 20px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+        }
+        
+        /* Overlay for mobile menu */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+        }
+        
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Hero Section - Mobile Optimized */
+        .hero {
+            padding: 120px 5% 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        
+        .hero-text {
+            text-align: center;
+            order: 2;
+        }
+        
+        .hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+        
+        .hero-title span {
+            color: var(--primary-color);
+        }
+        
+        .hero-subtitle {
+            font-size: 1rem;
+            color: #4b5563;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+        
+        .hero-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            order: 1;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            min-width: 100px;
+        }
+        
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 5px;
+        }
+        
+        /* Section Styling - Mobile */
+        section {
+            padding: 60px 5%;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+        
+        .section-title p {
+            font-size: 1rem;
+            color: #6b7280;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+        
+        /* About Section - Mobile */
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        
+        .about-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .about-text h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+        
+        .about-features {
+            margin-top: 25px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.5);
+            transition: var(--transition);
+        }
+        
+        .feature-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        
+        .feature-item h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+        
+        .feature-item p {
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+        
+        /* Facilities Section - Mobile */
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .facility-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .facility-img {
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .facility-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .facility-content {
+            padding: 20px;
+        }
+        
+        .facility-content h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+        
+        /* Gallery Section - Mobile */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            height: 180px;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        /* Address Section - Mobile */
+        .address-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 50px 5%;
+            text-align: center;
+        }
+        
+        .address-container h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: white;
+        }
+        
+        .address-details {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: left;
+        }
+        
+        .address-line {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .address-line i {
+            margin-top: 3px;
+            color: var(--primary-light);
+            flex-shrink: 0;
+        }
+        
+        .developer-info {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        /* Footer - Mobile */
+        footer {
+            background: var(--text-dark);
+            color: var(--text-light);
+            padding: 40px 5% 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            width: 35px;
+            height: 35px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+            font-size: 0.8rem;
+            line-height: 1.5;
+        }
+        
+        /* Desktop Styles */
+        @media (min-width: 768px) {
+            /* Header */
+            header {
+                padding: 20px 5%;
+            }
+            
+            .logo-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+            
+            .logo-text {
+                font-size: 24px;
+            }
+            
+            .mobile-menu-btn {
+                display: none;
+            }
+            
+            .nav-links {
+                position: static;
+                width: auto;
+                height: auto;
+                background: transparent;
+                box-shadow: none;
+                flex-direction: row;
+                padding: 0;
+                gap: 30px;
+                display: flex !important;
+            }
+            
+            .nav-links li {
+                margin-bottom: 0;
+            }
+            
+            .nav-links a {
+                font-size: 16px;
+                padding: 5px 0;
+            }
+            
+            .cta-button {
+                margin-top: 0;
+                padding: 12px 28px;
+                font-size: 16px;
+            }
+            
+            /* Hero Section */
+            .hero {
+                padding: 150px 5% 80px;
+            }
+            
+            .hero-content {
+                flex-direction: row;
+                align-items: center;
+                gap: 60px;
+            }
+            
+            .hero-text {
+                text-align: left;
+                flex: 1;
+                order: 1;
+            }
+            
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .hero-image {
+                flex: 1;
+                order: 2;
+            }
+            
+            .hero-image img {
+                height: 400px;
+            }
+            
+            /* Stats */
+            .hero-stats {
+                justify-content: flex-start;
+            }
+            
+            /* About Section */
+            .about-content {
+                flex-direction: row;
+                gap: 60px;
+            }
+            
+            .about-image img {
+                height: 350px;
+            }
+            
+            .about-features {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            /* Facilities */
+            .facilities-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            /* Gallery */
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+            
+            .gallery-item {
+                height: 220px;
+            }
+            
+            /* Footer */
+            .footer-content {
+                flex-direction: row;
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .address-container h2 {
+                font-size: 2.2rem;
+            }
+            
+            .address-line {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .facilities-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .gallery-item {
+                height: 250px;
+            }
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="logo-text">Griya <span>Sarana Mukti</span></div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="menu-overlay" id="menuOverlay"></div>
+            
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home" class="active">Beranda</a></li>
+                    <li><a href="#about">Tentang</a></li>
+                    <li><a href="#facilities">Fasilitas</a></li>
+                    <li><a href="#gallery">Galeri</a></li>
+                    <li>
+                        <button class="cta-button" onclick="showAddress()">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Lihat Lokasi
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">Hunian Modern & <span>Nyaman</span> di Pekalongan</h1>
+                <p class="hero-subtitle">Griya Sarana Mukti menghadirkan konsep perumahan modern dengan fasilitas lengkap dan lingkungan asri. Tempat terbaik untuk membangun masa depan keluarga Anda.</p>
+                
+                <button class="cta-button" onclick="showAddress()">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Lihat Lokasi
+                </button>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">Blok E</div>
+                        <div class="stat-label">Lokasi Strategis</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Keamanan</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">Fasilitas Utama</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-image glass-effect floating">
+                <img src="hero-image.jpg" alt="Griya Sarana Mukti - Perumahan Modern">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-title">
+            <h2>Tentang Griya Sarana Mukti</h2>
+            <p>Perumahan premium dengan konsep green living di jantung Pekalongan</p>
+        </div>
+        
+        <div class="about-content">
+            <div class="about-image">
+                <img src="about-image.jpg" alt="Tentang Kami">
+            </div>
+            
+            <div class="about-text">
+                <h3>Hunian Ideal untuk Keluarga Modern</h3>
+                <p>Griya Sarana Mukti terletak di lokasi strategis Pekalongan dengan akses mudah ke pusat kota, sekolah, rumah sakit, dan pusat perbelanjaan. Setiap unit dirancang dengan arsitektur modern yang memadukan kenyamanan dan keindahan.</p>
+                
+                <p>Dengan luas tanah mulai dari 100m² hingga 300m², kami menawarkan berbagai pilihan unit yang dapat disesuaikan dengan kebutuhan keluarga Anda. Setiap rumah dilengkapi dengan taman pribadi dan sistem keamanan terpadu.</p>
+                
+                <div class="about-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <div>
+                            <h4>Lingkungan Asri</h4>
+                            <p>40% area hijau untuk kualitas udara terbaik</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Keamanan 24/7</h4>
+                            <p>Sistem keamanan terpadu dengan CCTV</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-swimming-pool"></i>
+                        </div>
+                        <div>
+                            <h4>Fasilitas Lengkap</h4>
+                            <p>Kolam renang, taman bermain, area olahraga</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <div>
+                            <h4>Akses Mudah</h4>
+                            <p>Jalan utama lebar dengan parkir luas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section id="facilities" style="background: rgba(16, 185, 129, 0.03);">
+        <div class="section-title">
+            <h2>Fasilitas Unggulan</h2>
+            <p>Nikmati berbagai fasilitas premium untuk mendukung gaya hidup modern Anda</p>
+        </div>
+        
+        <div class="facilities-grid">
+            <div class="facility-card glass-effect">
+                <div class="facility-img">
+                    <img src="facility1.jpg" alt="Kolam Renang">
+                </div>
+                <div class="facility-content">
+                    <h3>Kolam Renang</h3>
+                    <p>Kolam renang dengan desain modern untuk dewasa dan anak-anak, dilengkapi area lounge yang nyaman.</p>
+                </div>
+            </div>
+            
+            <div class="facility-card glass-effect">
+                <div class="facility-img">
+                    <img src="facility2.jpg" alt="Taman Bermain">
+                </div>
+                <div class="facility-content">
+                    <h3>Taman Bermain Anak</h3>
+                    <p>Area bermain yang aman dan edukatif dengan peralatan bermain modern untuk anak-anak.</p>
+                </div>
+            </div>
+            
+            <div class="facility-card glass-effect">
+                <div class="facility-img">
+                    <img src="facility3.jpg" alt="Area Olahraga">
+                </div>
+                <div class="facility-content">
+                    <h3>Area Olahraga</h3>
+                    <p>Lapangan futsal, jogging track, dan area fitness outdoor untuk menjaga kesehatan keluarga.</p>
+                </div>
+            </div>
+            
+            <div class="facility-card glass-effect">
+                <div class="facility-img">
+                    <img src="facility4.jpg" alt="Area Komunal">
+                </div>
+                <div class="facility-content">
+                    <h3>Area Komunal</h3>
+                    <p>Ruang pertemuan dan gazebo untuk acara keluarga dan kegiatan sosial warga.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <div class="section-title">
+            <h2>Galeri Perumahan</h2>
+            <p>Lihat keindahan dan kenyamanan Griya Sarana Mukti melalui galeri foto kami</p>
+        </div>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item glass-effect">
+                <img src="galeri1.jpg" alt="Rumah Tipe 1">
+            </div>
+            
+            <div class="gallery-item glass-effect">
+                <img src="galeri2.jpg" alt="Interior Modern">
+            </div>
+            
+            <div class="gallery-item glass-effect">
+                <img src="galeri3.jpg" alt="Taman Perumahan">
+            </div>
+            
+            <div class="gallery-item glass-effect">
+                <img src="galeri4.jpg" alt="Jalan Perumahan">
+            </div>
+            
+            <div class="gallery-item glass-effect">
+                <img src="galeri5.jpg" alt="Kamar Tidur">
+            </div>
+            
+            <div class="gallery-item glass-effect">
+                <img src="galeri6.jpg" alt="Dapur Modern">
+            </div>
+        </div>
+    </section>
+
+    <!-- Address Section -->
+    <section class="address-section" id="address">
+        <div class="address-container">
+            <h2>Lokasi Kami</h2>
+            <div class="address-details glass-effect">
+                <div class="address-line">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <strong>Alamat Lengkap:</strong><br>
+                        Griya Sarana Mukti Blok E No 181, Gutoko, Kb. Agung<br>
+                        Kecamatan Kajen, Kabupaten Pekalongan<br>
+                        Jawa Tengah 51161
+                    </div>
+                </div>
+                
+                <div class="address-line">
+                    <i class="fas fa-info-circle"></i>
+                    <div>
+                        <strong>Informasi:</strong><br>
+                        Perumahan dengan lingkungan asri dan fasilitas lengkap<br>
+                        Tersedia berbagai tipe rumah dengan desain modern
+                    </div>
+                </div>
+                
+                <div class="address-line">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <strong>Jam Kunjungan:</strong><br>
+                        Senin - Minggu: 08:00 - 17:00 WIB
+                    </div>
+                </div>
+                
+                <div class="developer-info">
+                    <p><strong>Developer:</strong> Griya Sarana Mukti</p>
+                    <p><strong>Hubungi Kontak:</strong> Dev Fahrulskna</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Griya Sarana Mukti</h3>
+                <p>Perumahan modern dengan konsep green living di Pekalongan. Menyediakan hunian nyaman dengan fasilitas lengkap untuk keluarga.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Menu Cepat</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#about">Tentang Kami</a></li>
+                    <li><a href="#facilities">Fasilitas</a></li>
+                    <li><a href="#gallery">Galeri</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Informasi</h3>
+                <ul class="footer-links">
+                    <li><a href="#address">Lokasi & Alamat</a></li>
+                    <li><a href="#">Hubungi Kami</a></li>
+                    <li><a href="#">Developer: Dev Fahrulskna</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; <span id="current-year">2023</span> Griya Sarana Mukti. Semua hak dilindungi.</p>
+            <p>Griya sarana mukti blok e no 181, Gutoko, Kb. Agung. Kecamatan Kajen, Kabupaten Pekalongan, Jawa Tengah 51161</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        const menuOverlay = document.getElementById('menuOverlay');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+            // Toggle icon
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        menuOverlay.addEventListener('click', function() {
+            navLinks.classList.remove('active');
+            this.classList.remove('active');
+            mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+            mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+            });
+        });
+        
+        // Update year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Show address section
+        function showAddress() {
+            const addressSection = document.getElementById('address');
+            window.scrollTo({
+                top: addressSection.offsetTop - 80,
+                behavior: 'smooth'
+            });
+        }
+        
+        // Image error handling
+        document.querySelectorAll('img').forEach(img => {
+            img.onerror = function() {
+                console.log(`Gambar tidak ditemukan: ${this.src}`);
+                // Placeholder jika gambar tidak ditemukan
+                this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjRjBGNEY0Ii8+PHBhdGggZD0iTTM1IDQ1QzM3Ljc2MTQgNDUgNDAgNDIuNzYxNCA0MCA0MEM0MCAzNy4yMzg2IDM3Ljc2MTQgMzUgMzUgMzVDMzIuMjM4NiAzNSAzMCAzNy4yMzg2IDMwIDQwQzMwIDQyLjc2MTQgMzIuMjM4NiA0NSAzNSA0NVoiIGZpbGw9IiMxMEI5ODEiLz48cGF0aCBkPSJNNjUgNzdIMzVDMzAuNTgxNyA3NyAyNyA3My40MTgzIDI3IDY5VjQ2TDM5IDU0TDUzLjUgNDBMNjcgNTJWNjlDNjcgNzMuNDE4MyA2My40MTgzIDc3IDU5IDc3SDY1WiIgZmlsbD0iIzEwQjk4MSIvPjwvc3ZnPg==';
+                this.alt = 'Gambar tidak tersedia';
+            };
+        });
+        
+        // Add active class to current section in navigation
+        window.addEventListener('scroll', function() {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Website Griya Sarana Mukti loaded');
+            console.log('Developer: Dev Fahrulskna');
+        });
+    </script>
+</body>
+</html>
